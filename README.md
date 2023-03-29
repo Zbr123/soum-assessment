@@ -1,2 +1,2 @@
-# soum Technical Assessment
+# Soum Technical Assessment
 Mobile Automation Framework For Android
