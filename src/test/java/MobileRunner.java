@@ -3,8 +3,9 @@ import org.junit.runner.RunWith;
 @RunWith(io.cucumber.junit.Cucumber.class)
 @CucumberOptions(features = {"src/test/resources/features/app/android/"},
         glue = {"src/test/java/step_defination"},
+        plugin = { "pretty", "html:target/cucumber-reports" },
         monochrome = true,
-        tags = "@Login")
+        tags = "@homePage")
 
 public class MobileRunner {
 }

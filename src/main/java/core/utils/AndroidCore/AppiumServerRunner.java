@@ -12,19 +12,6 @@ public class AppiumServerRunner {
     private static AppiumServiceBuilder builder;
     private static DesiredCapabilities cap;
 
-    public static void startServer() {
-        cap = new DesiredCapabilities();
-        cap.setCapability("noReset", "false");
-        builder = new AppiumServiceBuilder();
-        builder.withIPAddress("0.0.0.0");
-        builder.usingAnyFreePort();
-        builder.withCapabilities(cap);
-        builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
-        builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
-        service = AppiumDriverLocalService.buildService(builder);
-        service.start();
-    }
-
     public static void startServer(int port) {
         cap = new DesiredCapabilities();
         cap.setCapability("noReset", "false");
@@ -54,17 +41,6 @@ public class AppiumServerRunner {
             serverSocket = null;
         }
         return isServerRunning;
-    }
-
-    public static void StartAppiumServer()
-    {
-        System.out.println("Checking Appium Server");
-
-        if(!checkIfServerIsRunnning(4723))
-        {
-            System.out.println("Starting an Appium Server");
-            startServer();
-        }
     }
 
     public static void StartAppiumServer(String port) {
