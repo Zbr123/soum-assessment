@@ -3,8 +3,8 @@ package pages;
 import core.utils.ConfigUtil;
 import pages.android.HomePage;
 import pages.android.UpdatePage;
-
 import java.util.Properties;
+import pages.android.*;
 
 public class Page {
 

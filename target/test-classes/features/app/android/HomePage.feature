@@ -1,21 +1,26 @@
 Feature: Home Page Testing App
 
-  @homePage @android @final
-  Scenario: Verify the version code and version name display on home page
-    Given [Home Page] App should open successfully
-#    And  [Home Page] User is on Home Page title 'Testing App'
+#  @homePage @android @final
+#  Scenario: Verify the version code and version name display on home page
+#    Given [Home Page] App should open successfully
+##    And  [Home Page] User is on Home Page title 'Testing App'
 #    Then [Home Page] Verify the Version Code '106'
 #    And  [Home Page] Verify the Version Name '12.0'
+##
 #
-#
-#  @homePage @android
-#  Scenario: Verify the Immediate Update button is working
-#    Given [Home Page] App should open successfully
-#    And  [Home Page] User is on Home Page
-#    Then [Home Page] Verify the Immediate Update button is visible
-#    When [Home Page] User tap on Immediate Update Button
-#    Then [Update Page] Verify the three button options
-#    When [Update Page] User tap on Button '1'
+  @homePage @android @final
+  Scenario: Verify the Immediate Update button is working
+    Given [Home Page] App should open successfully
+    Then [Home Page] Verify the Immediate Update button is visible
+    When [Home Page] User tap on Immediate Update Button
+    Then [Home Page] Verify the three button options
+      | Button1  | Button2  | Button3  |
+      | BUTTON 1 | BUTTON 2 | BUTTON 3 |
+    When [Home Page] User tap on Button1
+    Then [Home Page] Verify that Result 1 is visible
+
+
+#   | When [Update Page] User tap on Button '1'
 #    Then [Update Page] Verify the Result '1'
 #    And  [Common Page] User tap on Back button
 #    When [Update Page] User tap on Button '2'
