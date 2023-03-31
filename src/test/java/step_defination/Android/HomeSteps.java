@@ -9,6 +9,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import pages.Page;
 
 import java.util.List;
@@ -16,21 +17,19 @@ import java.util.Map;
 
 
 public class HomeSteps extends Page {
-    @And("^\\[Home Page] User is on Home Page title 'Testing App'$")
-    public void UserIsOnHomePageTitleTestingApp() throws InterruptedException {
-        Thread.sleep(5000);
-        getHomePage().getTitle().isDisplayed();
+    @And("^\\[Home Page\\] User is on Home Page title (.*)$")
+    public void UserIsOnHomePageTitleTestingApp(String title)  {
+        Assert.assertEquals(getHomePage().getTitle().getText(),title,"Verify App Title");
     }
 
-    @And("^\\[Home Page] Verify the Version Code '106'$")
-    public void verifyTheCode() throws InterruptedException {
-        Thread.sleep(5000);
-        getHomePage().getVersionCode().isDisplayed();
+    @And("^\\[Home Page\\] Verify the Version Code (.*)$")
+    public void verifyTheCode(String versionCode) {
+        Assert.assertEquals(getHomePage().getVersionCode().getText(),versionCode,"Verify Version Code");
     }
 
-    @And("^\\[Home Page] Verify the Version Name '12.0'$")
-    public void verifyTheName() throws InterruptedException {
-        Thread.sleep(5000);
+    @And("^\\[Home Page\\] Verify the Version Name (.*)$")
+    public void verifyTheName(String versionName) {
+        Assert.assertEquals(getHomePage().getVersionName().getText(),versionName,"Verify Version Name");
         getHomePage().getVersionName().isDisplayed();
     }
 
@@ -45,34 +44,34 @@ public class HomeSteps extends Page {
         getHomePage().getImmediateButton().click();
     }
 
-    @Then("[Home Page] Verify the three button options")
-    public void updatePageVerifyTheThreeButtonOptions(DataTable dataTable,String button) throws InterruptedException {
-        List<Map<String, String>> rows = dataTable.asMaps(String.class, String.class);
-        for (Map<String, String> itemData : rows) {
-            if (itemData.containsKey("Button1")) {
-                Thread.sleep(3000);
-                $(getHomePage().getButton(button)).shouldHave(Condition.exactText(itemData.get("Button1")));
-            }
-            if (itemData.containsKey("Button2")) {
-                Thread.sleep(3000);
-                $(getHomePage().getButton(button)).shouldHave(Condition.exactText(itemData.get("Button2")));
-            }
-            if (itemData.containsKey("Button3")) {
-                Thread.sleep(3000);
-                $(getHomePage().getButton(button)).shouldHave(Condition.exactText(itemData.get("Button3")));
-            }
+//    @Then("[Home Page] Verify the three button options")
+//    public void updatePageVerifyTheThreeButtonOptions(DataTable dataTable,String button) throws InterruptedException {
+//        List<Map<String, String>> rows = dataTable.asMaps(String.class, String.class);
+//        for (Map<String, String> itemData : rows) {
+//            if (itemData.containsKey("Button1")) {
+//                Thread.sleep(3000);
+//                $(getHomePage().getButton(button)).shouldHave(Condition.exactText(itemData.get("Button1")));
+//            }
+//            if (itemData.containsKey("Button2")) {
+//                Thread.sleep(3000);
+//                $(getHomePage().getButton(button)).shouldHave(Condition.exactText(itemData.get("Button2")));
+//            }
+//            if (itemData.containsKey("Button3")) {
+//                Thread.sleep(3000);
+//                $(getHomePage().getButton(button)).shouldHave(Condition.exactText(itemData.get("Button3")));
+//            }
+//
+//        }
+//    }
 
-        }
-    }
-
-    @When("[Home Page] User tap on Button (.*)")
+    @When("\\[Home Page\\] User tap on Button (.*)$")
     public void homePageUserTapOnButtonXxx(String button) {
         getHomePage().getButton(button).click();
     }
 
-    @Then("[Home Page] Verify that Result 1 is visible")
-    public void homePageVerifyThatResul1IsVisible() {
-        getHomePage().getFirstResult().isDisplayed();
+    @Then("\\[Home Page\\] Verify that Result (.*) is displayed$")
+    public void homePageVerifyThatResul1IsVisible(String number) {
+        Assert.assertEquals(getHomePage().getFirstResult().getText(),"RESULT "+number,"Verify Result with Number");
         getHomePage().backButton();
     }
 
