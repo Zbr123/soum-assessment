@@ -16,8 +16,13 @@ Feature: Home Page Testing App
     Then [Home Page] Verify the three button options
       | Button1  | Button2  | Button3  |
       | BUTTON 1 | BUTTON 2 | BUTTON 3 |
-    When [Home Page] User tap on Button1
+    When [Home Page] User tap on Button 1
     Then [Home Page] Verify that Result 1 is visible
+    When [Home Page] User tap on Button 2
+    Then [Home Page] Verify that Result 1 is visible
+    When [Home Page] User tap on Button 3
+    Then [Home Page] Verify that Result 1 is visible
+
 
 #   | When [Update Page] User tap on Button '1'
 #    Then [Update Page] Verify the Result '1'

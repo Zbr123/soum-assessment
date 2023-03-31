@@ -12,7 +12,7 @@ public class HomePage {
     private String ImmediateButtonID = "com.meritnation.store.testingapp:id/btn1";
     private String VersionCodeID ="com.meritnation.store.testingapp:id/ver_name";
     private String VersionNameID ="com.meritnation.store.testingapp:id/ver_name";
-    private String FirstButtonID ="com.meritnation.store.testingapp:id/btn"+number;
+    private String FirstButtonID ="com.meritnation.store.testingapp:id/btn";
     private String SecondButtonID ="com.meritnation.store.testingapp:id/btn2";
     private String ThirdButtonID ="com.meritnation.store.testingapp:id/btn3";
     private String FirstResult ="com.meritnation.store.testingapp:id/txt";
@@ -55,4 +55,7 @@ public class HomePage {
          AndroidDriverSetup.getAndroidDriver().navigate().back();
     }
 
+    public WebElement getButton(String button) {
+        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id("com.meritnation.store.testingapp:id/btn"+button)));
+    }
 }

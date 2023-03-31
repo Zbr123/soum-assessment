@@ -46,28 +46,28 @@ public class HomeSteps extends Page {
     }
 
     @Then("[Home Page] Verify the three button options")
-    public void updatePageVerifyTheThreeButtonOptions(DataTable dataTable) throws InterruptedException {
+    public void updatePageVerifyTheThreeButtonOptions(DataTable dataTable,String button) throws InterruptedException {
         List<Map<String, String>> rows = dataTable.asMaps(String.class, String.class);
         for (Map<String, String> itemData : rows) {
             if (itemData.containsKey("Button1")) {
                 Thread.sleep(3000);
-                $(getHomePage().getFirstButton()).shouldHave(Condition.exactText(itemData.get("Button1")));
+                $(getHomePage().getButton(button)).shouldHave(Condition.exactText(itemData.get("Button1")));
             }
             if (itemData.containsKey("Button2")) {
                 Thread.sleep(3000);
-                $(getHomePage().getSecondButton()).shouldHave(Condition.exactText(itemData.get("Button2")));
+                $(getHomePage().getButton(button)).shouldHave(Condition.exactText(itemData.get("Button2")));
             }
             if (itemData.containsKey("Button3")) {
                 Thread.sleep(3000);
-                $(getHomePage().getThirdButton()).shouldHave(Condition.exactText(itemData.get("Button3")));
+                $(getHomePage().getButton(button)).shouldHave(Condition.exactText(itemData.get("Button3")));
             }
 
         }
     }
 
-    @When("[Home Page] User tap on Button1")
-    public void homePageUserTapOnButton1() {
-        getHomePage().getFirstButton().click();
+    @When("[Home Page] User tap on Button (.*)")
+    public void homePageUserTapOnButtonXxx(String button) {
+        getHomePage().getButton(button).click();
     }
 
     @Then("[Home Page] Verify that Result 1 is visible")
