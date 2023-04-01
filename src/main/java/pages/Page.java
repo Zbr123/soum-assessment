@@ -2,9 +2,7 @@ package pages;
 
 import core.utils.ConfigUtil;
 import pages.android.HomePage;
-import pages.android.UpdatePage;
 import java.util.Properties;
-import pages.android.*;
 
 public class Page {
 
@@ -13,6 +11,4 @@ public class Page {
 
     private final HomePage homePage = new HomePage(this);
     protected HomePage getHomePage() {return homePage;}
-    private final UpdatePage updatePage = new UpdatePage(this);
-    protected UpdatePage getUpdatePage() {return updatePage;}
 }

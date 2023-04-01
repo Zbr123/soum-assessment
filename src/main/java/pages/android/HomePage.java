@@ -7,61 +7,45 @@ import pages.Page;
 
 public class HomePage {
 
-
-    private String Title_Xpath = "///hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView";
-    private String ImmediateButtonID = "com.meritnation.store.testingapp:id/btn1";
-    private String FlexibleButtonID = "com.meritnation.store.testingapp:id/btn2";
-
-    private String VersionCodeID ="com.meritnation.store.testingapp:id/ver_code";
-    private String VersionNameID ="com.meritnation.store.testingapp:id/ver_name";
-    private String FirstButtonID ="com.meritnation.store.testingapp:id/btn1";
-    private String SecondButtonID ="com.meritnation.store.testingapp:id/btn2";
-    private String ThirdButtonID ="com.meritnation.store.testingapp:id/btn3";
-    private String FirstResult ="com.meritnation.store.testingapp:id/txt";
+    private String titleXpath = "//android.view.ViewGroup/android.widget.TextView";
+    private String immediateButtonID = "com.meritnation.store.testingapp:id/btn1";
+    private String flexibleButtonID = "com.meritnation.store.testingapp:id/btn2";
+    private String versionCodeID ="com.meritnation.store.testingapp:id/ver_code";
+    private String versionNameID ="com.meritnation.store.testingapp:id/ver_name";
+    private String resultText ="com.meritnation.store.testingapp:id/txt";
 
     public HomePage(Page page) {
     }
 
     public WebElement getTitle() {
-        return (AndroidDriverSetup.getAndroidDriver().findElement(By.xpath(Title_Xpath)));
+        return (AndroidDriverSetup.getAndroidDriver().findElement(By.xpath(titleXpath)));
     }
 
     public WebElement getVersionCode() {
-        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(VersionCodeID)));
+        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(versionCodeID)));
     }
 
     public WebElement getVersionName() {
-        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(VersionNameID)));
+        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(versionNameID)));
+    }
+
+    public WebElement getButton(String num) {
+        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id("com.meritnation.store.testingapp:id/btn"+num)));
     }
 
     public WebElement getImmediateButton() {
-        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(ImmediateButtonID)));
+        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(immediateButtonID)));
     }
+
     public WebElement getFlexibleButton() {
-        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(FlexibleButtonID)));
+        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(flexibleButtonID)));
     }
 
-
-    public WebElement getFirstButton() {
-        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(FirstButtonID)));
+    public WebElement getResult() {
+        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(resultText)));
     }
 
-    public WebElement getSecondButton() {
-        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(SecondButtonID)));
-    }
-
-    public WebElement getThirdButton() {
-        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(ThirdButtonID)));
-    }
-
-    public WebElement getFirstResult() {
-        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(FirstResult)));
-    }
     public void backButton() {
          AndroidDriverSetup.getAndroidDriver().navigate().back();
-    }
-
-    public WebElement getButton(String button) {
-        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id("com.meritnation.store.testingapp:id/btn"+button)));
     }
 }
