@@ -7,12 +7,14 @@ import pages.Page;
 
 public class HomePage {
 
-    String number;
+
     private String Title_Xpath = "///hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView";
     private String ImmediateButtonID = "com.meritnation.store.testingapp:id/btn1";
-    private String VersionCodeID ="com.meritnation.store.testingapp:id/ver_name";
+    private String FlexibleButtonID = "com.meritnation.store.testingapp:id/btn2";
+
+    private String VersionCodeID ="com.meritnation.store.testingapp:id/ver_code";
     private String VersionNameID ="com.meritnation.store.testingapp:id/ver_name";
-    private String FirstButtonID ="com.meritnation.store.testingapp:id/btn";
+    private String FirstButtonID ="com.meritnation.store.testingapp:id/btn1";
     private String SecondButtonID ="com.meritnation.store.testingapp:id/btn2";
     private String ThirdButtonID ="com.meritnation.store.testingapp:id/btn3";
     private String FirstResult ="com.meritnation.store.testingapp:id/txt";
@@ -35,6 +37,10 @@ public class HomePage {
     public WebElement getImmediateButton() {
         return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(ImmediateButtonID)));
     }
+    public WebElement getFlexibleButton() {
+        return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(FlexibleButtonID)));
+    }
+
 
     public WebElement getFirstButton() {
         return (AndroidDriverSetup.getAndroidDriver().findElement(By.id(FirstButtonID)));

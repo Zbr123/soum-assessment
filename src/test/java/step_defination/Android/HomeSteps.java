@@ -44,26 +44,24 @@ public class HomeSteps extends Page {
         getHomePage().getImmediateButton().click();
     }
 
-//    @Then("[Home Page] Verify the three button options")
-//    public void updatePageVerifyTheThreeButtonOptions(DataTable dataTable,String button) throws InterruptedException {
-//        List<Map<String, String>> rows = dataTable.asMaps(String.class, String.class);
-//        for (Map<String, String> itemData : rows) {
-//            if (itemData.containsKey("Button1")) {
-//                Thread.sleep(3000);
-//                $(getHomePage().getButton(button)).shouldHave(Condition.exactText(itemData.get("Button1")));
-//            }
-//            if (itemData.containsKey("Button2")) {
-//                Thread.sleep(3000);
-//                $(getHomePage().getButton(button)).shouldHave(Condition.exactText(itemData.get("Button2")));
-//            }
-//            if (itemData.containsKey("Button3")) {
-//                Thread.sleep(3000);
-//                $(getHomePage().getButton(button)).shouldHave(Condition.exactText(itemData.get("Button3")));
-//            }
-//
-//        }
-//    }
-
+    @Then("[Home Page] Verify the three button options")
+    public void updatePageVerifyTheThreeButtonOptions(DataTable dataTable) throws InterruptedException {
+        List<Map<String, String>> rows = dataTable.asMaps(String.class, String.class);
+        for (Map<String, String> itemData : rows) {
+            if (itemData.containsKey("Button1")) {
+                Thread.sleep(3000);
+                $(getHomePage().getFirstButton()).shouldHave(Condition.exactText(itemData.get("Button1")));
+            }
+            if (itemData.containsKey("Button2")) {
+                Thread.sleep(3000);
+                $(getHomePage().getSecondButton()).shouldHave(Condition.exactText(itemData.get("Button2")));
+            }
+            if (itemData.containsKey("Button3")) {
+                Thread.sleep(3000);
+                $(getHomePage().getThirdButton()).shouldHave(Condition.exactText(itemData.get("Button3")));
+            }
+        }
+    }
     @When("\\[Home Page\\] User tap on Button (.*)$")
     public void homePageUserTapOnButtonXxx(String button) {
         getHomePage().getButton(button).click();
@@ -75,4 +73,13 @@ public class HomeSteps extends Page {
         getHomePage().backButton();
     }
 
+    @When("[Home Page] User tap on Flexible Update Button")
+    public void homePageUserTapOnFlexibleUpdateButton() {
+        getHomePage().getFlexibleButton().click();
+    }
+
+    @Then("[Home Page] Verify the Flexible Update button is visible")
+    public void homePageVerifyTheFlexibleUpdateButtonIsVisible() {
+        getHomePage().getFlexibleButton().isDisplayed();
+    }
 }
